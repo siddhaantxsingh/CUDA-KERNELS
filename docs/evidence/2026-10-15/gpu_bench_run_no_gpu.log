@@ -1,0 +1,2 @@
+bench/gpu_bench.cu:124: cudaGetDeviceCount(&ndev): CUDA driver version is insufficient for CUDA runtime version
+exit status 2

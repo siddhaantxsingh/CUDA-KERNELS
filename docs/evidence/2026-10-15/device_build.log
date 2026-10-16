@@ -1,0 +1,17 @@
+ 22:59:27 up 7 min,  0 user,  load average: 16.64, 10.53, 4.69
+CUDA_ROOT=build/cuda-root tools/device_build.sh build/device sm_80 sm_89 sm_90
+sm_80: 23 kernels compiled
+sm_89: 23 kernels compiled
+sm_90: 23 kernels compiled
+python3 tools/resources.py build/device > build/resources.json
+python3 tools/sass_check.py build/device sm_80 sm_89 sm_90 > build/sass.json
+sm_80: kc::hgemm_mma_kernel<128, 128, 32, 64, 32, false>: 32 HMMA ['HMMA.16816.F32'], 12 LDSM
+sm_80: kc::hgemm_mma_kernel<128, 128, 32, 64, 32, true>: 32 HMMA ['HMMA.16816.F32'], 12 LDSM
+sm_80: kc::mma_probe_kernel: 1 HMMA ['HMMA.16816.F32'], 0 LDSM
+sm_89: kc::hgemm_mma_kernel<128, 128, 32, 64, 32, false>: 32 HMMA ['HMMA.16816.F32'], 12 LDSM
+sm_89: kc::hgemm_mma_kernel<128, 128, 32, 64, 32, true>: 32 HMMA ['HMMA.16816.F32'], 12 LDSM
+sm_89: kc::mma_probe_kernel: 1 HMMA ['HMMA.16816.F32'], 0 LDSM
+sm_90: kc::hgemm_mma_kernel<128, 128, 32, 64, 32, false>: 32 HMMA ['HMMA.16816.F32'], 12 LDSM
+sm_90: kc::hgemm_mma_kernel<128, 128, 32, 64, 32, true>: 32 HMMA ['HMMA.16816.F32'], 12 LDSM
+sm_90: kc::mma_probe_kernel: 1 HMMA ['HMMA.16816.F32'], 0 LDSM
+no stack frames or spills in any kernel

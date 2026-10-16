@@ -1,0 +1,42 @@
+ 23:01:30 up 9 min,  0 user,  load average: 17.11, 12.68, 6.19
+g++ -O2 -std=c++20 -pthread -Wall -Wextra -fno-strict-aliasing -Iinclude tests/test_kernels.cpp -o build/test_kernels
+g++ -O2 -std=c++20 -pthread -Wall -Wextra -fno-strict-aliasing -Iinclude tests/test_tracer.cpp -o build/test_tracer
+./build/test_tracer
+ok   consecutive floats: 4 sectors = 4
+ok   consecutive floats: efficiency = 1
+ok   stride 2: 8 sectors = 8
+ok   stride 2: efficiency = 0.5
+ok   stride 32: one sector per lane = 32
+ok   misaligned by 4 bytes: 5 sectors = 5
+ok   float4 per lane: 16 sectors = 16
+ok   float4: efficiency = 1
+ok   broadcast: 1 sector = 1
+ok   broadcast: 1 request = 1
+ok   predicated: one request per warp = 2
+ok   predicated: half the lanes = 0.5
+ok   shared stride 1: conflict-free = 1
+ok   shared stride 2: 2-way = 2
+ok   shared stride 32: 32-way = 32
+ok   shared stride 33: conflict-free = 1
+ok   shared broadcast = 1
+ok   float4 consecutive: 4 wavefronts (one per quarter warp) = 4
+ok   float4 consecutive: conflict-free = 1
+ok   float4 stride 2: 2-way = 2
+0 failures
+./build/test_kernels
+reduce           ok (26 checks)
+transpose        ok (15 checks)
+gemm             ok (24 checks)
+softmax          ok (6 checks)
+layernorm        ok (9 checks)
+attention_d32    ok (10 checks)
+attention_d64    ok (10 checks)
+half             ok (2 checks)
+mma_probe        ok (1 checks)
+  hgemm 256x256x256: max |error| vs fp16-input ref 4.5e-05 (0.009 x bound), vs fp32-input ref 0.023
+  hgemm 130x264x520: max |error| vs fp16-input ref 0.00011 (0.005 x bound), vs fp32-input ref 0.028
+hgemm            ok (15 checks)
+softmax_bwd      ok (10 checks)
+layernorm_bwd    ok (22 checks)
+150 checks, 0 failures
+exit 0, wall 116 s

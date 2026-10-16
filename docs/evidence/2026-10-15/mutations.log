@@ -1,0 +1,11 @@
+MUTATION: B loaded with ldmatrix without .trans -> 13 checks, 11 failures
+MUTATION: B fragments of neighbouring n-tiles swapped -> 13 checks, 9 failures
+MUTATION: A ldmatrix lane-to-row mapping wrong -> 13 checks, 10 failures
+MUTATION: missing __syncthreads before the mma loop -> 13 checks, 11 failures
+MUTATION: epilogue row offset for c2/c3 wrong -> 13 checks, 12 failures
+MUTATION: vector path K-tail guard removed -> 13 checks, 0 failures
+MUTATION: emulator: a1/a2 swapped in mma layout model -> 1 checks, 1 failures
+MUTATION: layernorm backward without the xh * mean(g xh) term -> 22 checks, 6 failures
+MUTATION: softmax backward without the dot-product term -> 10 checks, 5 failures
+MUTATION: vector path K-tail guard removed (after adding the NaN-padding check) -> 15 checks, 1 failures
+MUTATION: element path K-tail guard removed -> 15 checks, 1 failures

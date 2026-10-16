@@ -1,0 +1,2 @@
+clang++ -x cuda --cuda-path=build/cuda-root --cuda-gpu-arch=sm_89 -O3 -std=c++17 -Wno-unknown-cuda-version --gcc-install-dir=/usr/lib/gcc/x86_64-linux-gnu/13 -Iinclude \
+  bench/gpu_bench.cu -o build/gpu_bench -Lbuild/cuda-root/lib64 -l:libcudart.so.12 -Wl,-rpath,/home/user/PROJECTS/cuda-kernels/build/cuda-root/lib64
